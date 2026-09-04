@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useAuthSession } from "@/hooks/useAuthSession";
 import { useShop } from "@/store/shop";
 
 const NAV = [
@@ -15,6 +16,7 @@ const NAV = [
 
 export function Header() {
   const { totals, wishlist, setSearchOpen, setCartOpen } = useShop();
+  const { user } = useAuthSession();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -78,7 +80,11 @@ export function Header() {
                 </span>
               ) : null}
             </Link>
-            <Link to="/account" aria-label="Account" className="hidden sm:block">
+            <Link
+              to={user ? "/account" : "/auth"}
+              aria-label={user ? "Account" : "Sign in"}
+              className="hidden sm:block"
+            >
               <User className="h-[18px] w-[18px]" />
             </Link>
             <button type="button" aria-label="Open bag" className="relative" onClick={() => setCartOpen(true)}>
