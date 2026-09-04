@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/Bits";
 import { ButtonLink } from "@/components/site/Button";
 import { ProductGrid } from "@/components/site/ProductCard";
 import { Reveal } from "@/components/site/Reveal";
-import { getSearchResults, products } from "@/data/products";
+import { searchProducts, products } from "@/data/products";
 import { useShop } from "@/store/shop";
 
 export const Route = createFileRoute("/search")({
@@ -26,7 +26,7 @@ function SearchPage() {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
-  const results = useMemo(() => (query.trim() ? getSearchResults(query) : []), [query]);
+  const results = useMemo(() => (query.trim() ? searchProducts(query) : []), [query]);
   const suggestions = useMemo(() => products.slice(0, 4), []);
 
   return (
