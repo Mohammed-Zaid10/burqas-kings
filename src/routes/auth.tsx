@@ -6,7 +6,7 @@ import { GoogleSignIn } from "@/components/site/GoogleSignIn";
 import { useAuthSession } from "@/hooks/useAuthSession";
 import { supabase } from "@/integrations/supabase/client";
 
-type AuthSearch = { redirect?: string };
+type AuthSearch = { redirect?: string | undefined };
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
