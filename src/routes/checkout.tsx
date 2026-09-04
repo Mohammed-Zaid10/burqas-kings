@@ -19,6 +19,7 @@ export const Route = createFileRoute("/checkout")({
       { name: "robots", content: "noindex" },
     ],
   }),
+  ssr: false,
   component: CheckoutPage,
 });
 
@@ -32,6 +33,7 @@ const PAYMENT_METHODS = ["UPI", "Card", "Netbanking", "Cash on delivery"];
 
 function CheckoutPage() {
   const { cart, totals, placeOrder } = useShop();
+  const { user, loading: authLoading } = useAuthSession();
   const navigate = useNavigate();
   const [step, setStep] = useState(0);
   const [processing, setProcessing] = useState(false);
@@ -59,6 +61,36 @@ function CheckoutPage() {
       </div>
     );
   }
+
+  if (authLoading) {
+    return (
+      <div className="page-enter shell py-24">
+        <p className="text-sm text-muted-foreground">One moment…</p>
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="page-enter">
+        <PageHero eyebrow="Secure checkout" title="Sign in to continue" compact />
+        <div className="shell py-16 pb-28">
+          <div className="mx-auto max-w-md border border-border p-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              Sign in or create your account with Google to complete your order — your bag is saved.
+            </p>
+            <div className="mt-7 flex flex-col gap-4">
+              <GoogleSignIn next="/checkout" />
+              <ButtonLink to="/cart" variant="outline">
+                Back to bag
+              </ButtonLink>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
 
   const validateStep = () => {
     if (step === 0) {
