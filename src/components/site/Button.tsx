@@ -33,16 +33,18 @@ export function Button({
   );
 }
 
-export function ButtonLink({
-  variant = "solid",
-  size = "md",
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof Link> & { variant?: Variant; size?: Size; children: ReactNode }) {
+type AnyLinkProps = { variant?: Variant; size?: Size; className?: string; children: ReactNode } & Record<
+  string,
+  unknown
+>;
+
+const AnyLink = Link as unknown as (props: Record<string, unknown>) => ReactNode;
+
+export function ButtonLink({ variant = "solid", size = "md", className, children, ...rest }: AnyLinkProps) {
   return (
-    <Link className={btnClass(variant, size, className)} {...(rest as never)}>
+    <AnyLink {...rest} className={btnClass(variant, size, className)}>
       {children}
-    </Link>
+    </AnyLink>
   );
 }
+

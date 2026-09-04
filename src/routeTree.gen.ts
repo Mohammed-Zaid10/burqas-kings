@@ -10,22 +10,37 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CollectionsRouteImport } from './routes/collections'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FabricCareRouteImport } from './routes/fabric-care'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as SaleRouteImport } from './routes/sale'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SizeGuideRouteImport } from './routes/size-guide'
+import { Route as StoryRouteImport } from './routes/story'
+import { Route as TrackRouteImport } from './routes/track'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsIdRouteImport } from './routes/collections.$id'
+import { Route as JournalIndexRouteImport } from './routes/journal.index'
+import { Route as JournalSlugRouteImport } from './routes/journal.$slug'
 import { Route as OrderIdRouteImport } from './routes/order.$id'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartRoute = CartRouteImport.update({
@@ -43,6 +58,21 @@ const CollectionsRoute = CollectionsRouteImport.update({
   path: '/collections',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FabricCareRoute = FabricCareRouteImport.update({
+  id: '/fabric-care',
+  path: '/fabric-care',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LookbookRoute = LookbookRouteImport.update({
   id: '/lookbook',
   path: '/lookbook',
@@ -58,9 +88,29 @@ const SaleRoute = SaleRouteImport.update({
   path: '/sale',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SizeGuideRoute = SizeGuideRouteImport.update({
+  id: '/size-guide',
+  path: '/size-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoryRoute = StoryRouteImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrackRoute = TrackRouteImport.update({
+  id: '/track',
+  path: '/track',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WishlistRoute = WishlistRouteImport.update({
@@ -78,6 +128,16 @@ const CollectionsIdRoute = CollectionsIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => CollectionsRoute,
 } as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/journal/',
+  path: '/journal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalSlugRoute = JournalSlugRouteImport.update({
+  id: '/journal/$slug',
+  path: '/journal/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrderIdRoute = OrderIdRouteImport.update({
   id: '/order/$id',
   path: '/order/$id',
@@ -91,108 +151,178 @@ const ProductSlugRoute = ProductSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/fabric-care': typeof FabricCareRoute
+  '/faq': typeof FaqRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/size-guide': typeof SizeGuideRoute
+  '/story': typeof StoryRoute
+  '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$id': typeof CollectionsIdRoute
+  '/journal/$slug': typeof JournalSlugRoute
   '/order/$id': typeof OrderIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/fabric-care': typeof FabricCareRoute
+  '/faq': typeof FaqRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/size-guide': typeof SizeGuideRoute
+  '/story': typeof StoryRoute
+  '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$id': typeof CollectionsIdRoute
+  '/journal/$slug': typeof JournalSlugRoute
   '/order/$id': typeof OrderIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections': typeof CollectionsIndexRoute
+  '/journal': typeof JournalIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account': typeof AccountRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/fabric-care': typeof FabricCareRoute
+  '/faq': typeof FaqRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
+  '/size-guide': typeof SizeGuideRoute
+  '/story': typeof StoryRoute
+  '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$id': typeof CollectionsIdRoute
+  '/journal/$slug': typeof JournalSlugRoute
   '/order/$id': typeof OrderIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/account'
     | '/cart'
     | '/checkout'
     | '/collections'
+    | '/contact'
+    | '/fabric-care'
+    | '/faq'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
+    | '/size-guide'
+    | '/story'
+    | '/track'
     | '/wishlist'
     | '/collections/$id'
+    | '/journal/$slug'
     | '/order/$id'
     | '/product/$slug'
     | '/collections/'
+    | '/journal/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/account'
     | '/cart'
     | '/checkout'
+    | '/contact'
+    | '/fabric-care'
+    | '/faq'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
+    | '/size-guide'
+    | '/story'
+    | '/track'
     | '/wishlist'
     | '/collections/$id'
+    | '/journal/$slug'
     | '/order/$id'
     | '/product/$slug'
     | '/collections'
+    | '/journal'
   id:
     | '__root__'
     | '/'
+    | '/account'
     | '/cart'
     | '/checkout'
     | '/collections'
+    | '/contact'
+    | '/fabric-care'
+    | '/faq'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
+    | '/size-guide'
+    | '/story'
+    | '/track'
     | '/wishlist'
     | '/collections/$id'
+    | '/journal/$slug'
     | '/order/$id'
     | '/product/$slug'
     | '/collections/'
+    | '/journal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountRoute: typeof AccountRoute
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   CollectionsRoute: typeof CollectionsRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  FabricCareRoute: typeof FabricCareRoute
+  FaqRoute: typeof FaqRoute
   LookbookRoute: typeof LookbookRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   SaleRoute: typeof SaleRoute
+  SearchRoute: typeof SearchRoute
   ShopRoute: typeof ShopRoute
+  SizeGuideRoute: typeof SizeGuideRoute
+  StoryRoute: typeof StoryRoute
+  TrackRoute: typeof TrackRoute
   WishlistRoute: typeof WishlistRoute
+  JournalSlugRoute: typeof JournalSlugRoute
   OrderIdRoute: typeof OrderIdRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  JournalIndexRoute: typeof JournalIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -202,6 +332,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -225,6 +362,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fabric-care': {
+      id: '/fabric-care'
+      path: '/fabric-care'
+      fullPath: '/fabric-care'
+      preLoaderRoute: typeof FabricCareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lookbook': {
       id: '/lookbook'
       path: '/lookbook'
@@ -246,11 +404,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SaleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/size-guide': {
+      id: '/size-guide'
+      path: '/size-guide'
+      fullPath: '/size-guide'
+      preLoaderRoute: typeof SizeGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/story': {
+      id: '/story'
+      path: '/story'
+      fullPath: '/story'
+      preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/track': {
+      id: '/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof TrackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/wishlist': {
@@ -273,6 +459,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/collections/$id'
       preLoaderRoute: typeof CollectionsIdRouteImport
       parentRoute: typeof CollectionsRoute
+    }
+    '/journal/': {
+      id: '/journal/'
+      path: '/journal'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal/$slug': {
+      id: '/journal/$slug'
+      path: '/journal/$slug'
+      fullPath: '/journal/$slug'
+      preLoaderRoute: typeof JournalSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/order/$id': {
       id: '/order/$id'
@@ -307,16 +507,26 @@ const CollectionsRouteWithChildren = CollectionsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountRoute: AccountRoute,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   CollectionsRoute: CollectionsRouteWithChildren,
+  ContactRoute: ContactRoute,
+  FabricCareRoute: FabricCareRoute,
+  FaqRoute: FaqRoute,
   LookbookRoute: LookbookRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   SaleRoute: SaleRoute,
+  SearchRoute: SearchRoute,
   ShopRoute: ShopRoute,
+  SizeGuideRoute: SizeGuideRoute,
+  StoryRoute: StoryRoute,
+  TrackRoute: TrackRoute,
   WishlistRoute: WishlistRoute,
+  JournalSlugRoute: JournalSlugRoute,
   OrderIdRoute: OrderIdRoute,
   ProductSlugRoute: ProductSlugRoute,
+  JournalIndexRoute: JournalIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

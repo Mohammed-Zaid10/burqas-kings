@@ -40,8 +40,8 @@ const TABS = ["Description", "Fabric & Feel", "Fit & Sizing", "Care", "Shipping 
 function ProductPage() {
   const { product } = Route.useLoaderData();
   const { addToCart, setCartOpen, toggleWishlist, isWishlisted } = useShop();
-  const [color, setColor] = useState(product.colors[0].name);
-  const [size, setSize] = useState(product.sizes[2] ?? product.sizes[0]);
+  const [color, setColor] = useState(product.colors[0]!.name);
+  const [size, setSize] = useState(product.sizes[2] ?? product.sizes[0]!);
   const [qty, setQty] = useState(1);
   const [active, setActive] = useState(0);
   const [tab, setTab] = useState<(typeof TABS)[number]>("Description");
