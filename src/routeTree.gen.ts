@@ -20,6 +20,7 @@ import { Route as FaqRouteImport } from './routes/faq'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as SaleRouteImport } from './routes/sale'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SizeGuideRouteImport } from './routes/size-guide'
 import { Route as StoryRouteImport } from './routes/story'
@@ -85,6 +86,11 @@ const NewArrivalsRoute = NewArrivalsRouteImport.update({
 const SaleRoute = SaleRouteImport.update({
   id: '/sale',
   path: '/sale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -155,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/size-guide': typeof SizeGuideRoute
   '/story': typeof StoryRoute
@@ -178,6 +185,7 @@ export interface FileRoutesByTo {
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/size-guide': typeof SizeGuideRoute
   '/story': typeof StoryRoute
@@ -203,6 +211,7 @@ export interface FileRoutesById {
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
+  '/search': typeof SearchRoute
   '/shop': typeof ShopRoute
   '/size-guide': typeof SizeGuideRoute
   '/story': typeof StoryRoute
@@ -229,6 +238,7 @@ export interface FileRouteTypes {
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
     | '/size-guide'
     | '/story'
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
     | '/size-guide'
     | '/story'
@@ -276,6 +287,7 @@ export interface FileRouteTypes {
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
+    | '/search'
     | '/shop'
     | '/size-guide'
     | '/story'
@@ -301,6 +313,7 @@ export interface RootRouteChildren {
   LookbookRoute: typeof LookbookRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   SaleRoute: typeof SaleRoute
+  SearchRoute: typeof SearchRoute
   ShopRoute: typeof ShopRoute
   SizeGuideRoute: typeof SizeGuideRoute
   StoryRoute: typeof StoryRoute
@@ -389,6 +402,13 @@ declare module '@tanstack/react-router' {
       path: '/sale'
       fullPath: '/sale'
       preLoaderRoute: typeof SaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -497,6 +517,7 @@ const rootRouteChildren: RootRouteChildren = {
   LookbookRoute: LookbookRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   SaleRoute: SaleRoute,
+  SearchRoute: SearchRoute,
   ShopRoute: ShopRoute,
   SizeGuideRoute: SizeGuideRoute,
   StoryRoute: StoryRoute,
