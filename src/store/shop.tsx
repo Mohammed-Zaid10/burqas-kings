@@ -87,7 +87,7 @@ const DEMO_ORDER: Order = {
       name: products[0]!.name,
       image: products[0]!.images[0]!,
       price: products[0]!.price,
-      color: products[0]!.colors[0].name,
+      color: products[0]!.colors[0]!.name,
       size: "M",
       quantity: 1,
     },
