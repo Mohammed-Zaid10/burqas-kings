@@ -16,7 +16,6 @@ import { Route as CollectionsRouteImport } from './routes/collections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FabricCareRouteImport } from './routes/fabric-care'
 import { Route as FaqRouteImport } from './routes/faq'
-import { Route as JournalRouteImport } from './routes/journal'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as SaleRouteImport } from './routes/sale'
@@ -26,6 +25,7 @@ import { Route as StoryRouteImport } from './routes/story'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsIdRouteImport } from './routes/collections.$id'
+import { Route as JournalIndexRouteImport } from './routes/journal.index'
 import { Route as OrderIdRouteImport } from './routes/order.$id'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 
@@ -62,11 +62,6 @@ const FabricCareRoute = FabricCareRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JournalRoute = JournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LookbookRoute = LookbookRouteImport.update({
@@ -114,6 +109,11 @@ const CollectionsIdRoute = CollectionsIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => CollectionsRoute,
 } as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/journal/',
+  path: '/journal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrderIdRoute = OrderIdRouteImport.update({
   id: '/order/$id',
   path: '/order/$id',
@@ -133,7 +133,6 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/fabric-care': typeof FabricCareRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -145,6 +144,7 @@ export interface FileRoutesByFullPath {
   '/order/$id': typeof OrderIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -153,7 +153,6 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/fabric-care': typeof FabricCareRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -165,6 +164,7 @@ export interface FileRoutesByTo {
   '/order/$id': typeof OrderIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections': typeof CollectionsIndexRoute
+  '/journal': typeof JournalIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -175,7 +175,6 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/fabric-care': typeof FabricCareRoute
   '/faq': typeof FaqRoute
-  '/journal': typeof JournalRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -187,6 +186,7 @@ export interface FileRoutesById {
   '/order/$id': typeof OrderIdRoute
   '/product/$slug': typeof ProductSlugRoute
   '/collections/': typeof CollectionsIndexRoute
+  '/journal/': typeof JournalIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -198,7 +198,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/fabric-care'
     | '/faq'
-    | '/journal'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -210,6 +209,7 @@ export interface FileRouteTypes {
     | '/order/$id'
     | '/product/$slug'
     | '/collections/'
+    | '/journal/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -218,7 +218,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/fabric-care'
     | '/faq'
-    | '/journal'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -230,6 +229,7 @@ export interface FileRouteTypes {
     | '/order/$id'
     | '/product/$slug'
     | '/collections'
+    | '/journal'
   id:
     | '__root__'
     | '/'
@@ -239,7 +239,6 @@ export interface FileRouteTypes {
     | '/contact'
     | '/fabric-care'
     | '/faq'
-    | '/journal'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -251,6 +250,7 @@ export interface FileRouteTypes {
     | '/order/$id'
     | '/product/$slug'
     | '/collections/'
+    | '/journal/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -261,7 +261,6 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FabricCareRoute: typeof FabricCareRoute
   FaqRoute: typeof FaqRoute
-  JournalRoute: typeof JournalRoute
   LookbookRoute: typeof LookbookRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   SaleRoute: typeof SaleRoute
@@ -271,6 +270,7 @@ export interface RootRouteChildren {
   WishlistRoute: typeof WishlistRoute
   OrderIdRoute: typeof OrderIdRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  JournalIndexRoute: typeof JournalIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -322,13 +322,6 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/journal': {
-      id: '/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof JournalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lookbook': {
@@ -394,6 +387,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionsIdRouteImport
       parentRoute: typeof CollectionsRoute
     }
+    '/journal/': {
+      id: '/journal/'
+      path: '/journal'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/order/$id': {
       id: '/order/$id'
       path: '/order/$id'
@@ -433,7 +433,6 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FabricCareRoute: FabricCareRoute,
   FaqRoute: FaqRoute,
-  JournalRoute: JournalRoute,
   LookbookRoute: LookbookRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   SaleRoute: SaleRoute,
@@ -443,6 +442,7 @@ const rootRouteChildren: RootRouteChildren = {
   WishlistRoute: WishlistRoute,
   OrderIdRoute: OrderIdRoute,
   ProductSlugRoute: ProductSlugRoute,
+  JournalIndexRoute: JournalIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
