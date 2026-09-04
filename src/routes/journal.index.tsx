@@ -4,7 +4,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { articles } from "@/data/content";
 import { formatDate } from "@/lib/format";
 
-export const Route = createFileRoute("/journal")({
+export const Route = createFileRoute("/journal/")({
   head: () => ({
     meta: [
       { title: "Journal — Burqas Kings" },

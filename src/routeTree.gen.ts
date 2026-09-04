@@ -16,6 +16,7 @@ import { Route as CollectionsRouteImport } from './routes/collections'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as FabricCareRouteImport } from './routes/fabric-care'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as JournalRouteImport } from './routes/journal'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as SaleRouteImport } from './routes/sale'
@@ -61,6 +62,11 @@ const FabricCareRoute = FabricCareRouteImport.update({
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalRoute = JournalRouteImport.update({
+  id: '/journal',
+  path: '/journal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LookbookRoute = LookbookRouteImport.update({
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/fabric-care': typeof FabricCareRoute
   '/faq': typeof FaqRoute
+  '/journal': typeof JournalRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -146,6 +153,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/fabric-care': typeof FabricCareRoute
   '/faq': typeof FaqRoute
+  '/journal': typeof JournalRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/fabric-care': typeof FabricCareRoute
   '/faq': typeof FaqRoute
+  '/journal': typeof JournalRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/fabric-care'
     | '/faq'
+    | '/journal'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/fabric-care'
     | '/faq'
+    | '/journal'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -228,6 +239,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/fabric-care'
     | '/faq'
+    | '/journal'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -249,6 +261,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FabricCareRoute: typeof FabricCareRoute
   FaqRoute: typeof FaqRoute
+  JournalRoute: typeof JournalRoute
   LookbookRoute: typeof LookbookRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   SaleRoute: typeof SaleRoute
@@ -309,6 +322,13 @@ declare module '@tanstack/react-router' {
       path: '/faq'
       fullPath: '/faq'
       preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal': {
+      id: '/journal'
+      path: '/journal'
+      fullPath: '/journal'
+      preLoaderRoute: typeof JournalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lookbook': {
@@ -413,6 +433,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FabricCareRoute: FabricCareRoute,
   FaqRoute: FaqRoute,
+  JournalRoute: JournalRoute,
   LookbookRoute: LookbookRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   SaleRoute: SaleRoute,
