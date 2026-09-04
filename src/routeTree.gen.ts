@@ -22,6 +22,7 @@ import { Route as SaleRouteImport } from './routes/sale'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SizeGuideRouteImport } from './routes/size-guide'
 import { Route as StoryRouteImport } from './routes/story'
+import { Route as TrackRouteImport } from './routes/track'
 import { Route as WishlistRouteImport } from './routes/wishlist'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsIdRouteImport } from './routes/collections.$id'
@@ -95,6 +96,11 @@ const StoryRoute = StoryRouteImport.update({
   path: '/story',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TrackRoute = TrackRouteImport.update({
+  id: '/track',
+  path: '/track',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WishlistRoute = WishlistRouteImport.update({
   id: '/wishlist',
   path: '/wishlist',
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/shop': typeof ShopRoute
   '/size-guide': typeof SizeGuideRoute
   '/story': typeof StoryRoute
+  '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$id': typeof CollectionsIdRoute
   '/journal/$slug': typeof JournalSlugRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/size-guide': typeof SizeGuideRoute
   '/story': typeof StoryRoute
+  '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$id': typeof CollectionsIdRoute
   '/journal/$slug': typeof JournalSlugRoute
@@ -189,6 +197,7 @@ export interface FileRoutesById {
   '/shop': typeof ShopRoute
   '/size-guide': typeof SizeGuideRoute
   '/story': typeof StoryRoute
+  '/track': typeof TrackRoute
   '/wishlist': typeof WishlistRoute
   '/collections/$id': typeof CollectionsIdRoute
   '/journal/$slug': typeof JournalSlugRoute
@@ -213,6 +222,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/size-guide'
     | '/story'
+    | '/track'
     | '/wishlist'
     | '/collections/$id'
     | '/journal/$slug'
@@ -234,6 +244,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/size-guide'
     | '/story'
+    | '/track'
     | '/wishlist'
     | '/collections/$id'
     | '/journal/$slug'
@@ -256,6 +267,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/size-guide'
     | '/story'
+    | '/track'
     | '/wishlist'
     | '/collections/$id'
     | '/journal/$slug'
@@ -279,6 +291,7 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   SizeGuideRoute: typeof SizeGuideRoute
   StoryRoute: typeof StoryRoute
+  TrackRoute: typeof TrackRoute
   WishlistRoute: typeof WishlistRoute
   JournalSlugRoute: typeof JournalSlugRoute
   OrderIdRoute: typeof OrderIdRoute
@@ -379,6 +392,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/track': {
+      id: '/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof TrackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/wishlist': {
       id: '/wishlist'
       path: '/wishlist'
@@ -459,6 +479,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   SizeGuideRoute: SizeGuideRoute,
   StoryRoute: StoryRoute,
+  TrackRoute: TrackRoute,
   WishlistRoute: WishlistRoute,
   JournalSlugRoute: JournalSlugRoute,
   OrderIdRoute: OrderIdRoute,
