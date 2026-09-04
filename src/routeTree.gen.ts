@@ -14,6 +14,7 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CollectionsRouteImport } from './routes/collections'
 import { Route as FabricCareRouteImport } from './routes/fabric-care'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as LookbookRouteImport } from './routes/lookbook'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as SaleRouteImport } from './routes/sale'
@@ -49,6 +50,11 @@ const CollectionsRoute = CollectionsRouteImport.update({
 const FabricCareRoute = FabricCareRouteImport.update({
   id: '/fabric-care',
   path: '/fabric-care',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LookbookRoute = LookbookRouteImport.update({
@@ -113,6 +119,7 @@ export interface FileRoutesByFullPath {
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
   '/fabric-care': typeof FabricCareRoute
+  '/faq': typeof FaqRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/fabric-care': typeof FabricCareRoute
+  '/faq': typeof FaqRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/checkout': typeof CheckoutRoute
   '/collections': typeof CollectionsRouteWithChildren
   '/fabric-care': typeof FabricCareRoute
+  '/faq': typeof FaqRoute
   '/lookbook': typeof LookbookRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/sale': typeof SaleRoute
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/collections'
     | '/fabric-care'
+    | '/faq'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/cart'
     | '/checkout'
     | '/fabric-care'
+    | '/faq'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -204,6 +215,7 @@ export interface FileRouteTypes {
     | '/checkout'
     | '/collections'
     | '/fabric-care'
+    | '/faq'
     | '/lookbook'
     | '/new-arrivals'
     | '/sale'
@@ -223,6 +235,7 @@ export interface RootRouteChildren {
   CheckoutRoute: typeof CheckoutRoute
   CollectionsRoute: typeof CollectionsRouteWithChildren
   FabricCareRoute: typeof FabricCareRoute
+  FaqRoute: typeof FaqRoute
   LookbookRoute: typeof LookbookRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   SaleRoute: typeof SaleRoute
@@ -269,6 +282,13 @@ declare module '@tanstack/react-router' {
       path: '/fabric-care'
       fullPath: '/fabric-care'
       preLoaderRoute: typeof FabricCareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lookbook': {
@@ -371,6 +391,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckoutRoute: CheckoutRoute,
   CollectionsRoute: CollectionsRouteWithChildren,
   FabricCareRoute: FabricCareRoute,
+  FaqRoute: FaqRoute,
   LookbookRoute: LookbookRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   SaleRoute: SaleRoute,
