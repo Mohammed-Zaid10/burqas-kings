@@ -78,7 +78,11 @@ export function Header() {
                 </span>
               ) : null}
             </Link>
-            <Link to="/account" aria-label="Account" className="hidden sm:block">
+            <Link
+              to={user ? "/account" : "/auth"}
+              aria-label={user ? "Account" : "Sign in"}
+              className="hidden sm:block"
+            >
               <User className="h-[18px] w-[18px]" />
             </Link>
             <button type="button" aria-label="Open bag" className="relative" onClick={() => setCartOpen(true)}>
