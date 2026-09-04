@@ -28,7 +28,6 @@ export function SearchOverlay() {
   return (
     <Dialog open={searchOpen} onOpenChange={setSearchOpen}>
       <DialogContent
-        showCloseButton={false}
         className="top-0 max-w-none translate-y-0 gap-0 rounded-none border-0 border-b border-border bg-background p-0 sm:max-w-none"
       >
         <DialogTitle className="sr-only">Search products</DialogTitle>
