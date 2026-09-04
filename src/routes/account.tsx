@@ -119,7 +119,7 @@ function AccountPage() {
 
           {tab === "Saved" ? (
             wishlistProducts.length ? (
-              <ProductGrid products={wishlistProducts} />
+              <ProductGrid items={wishlistProducts} />
             ) : (
               <p className="text-sm text-muted-foreground">Nothing saved yet.</p>
             )

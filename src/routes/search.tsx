@@ -77,7 +77,7 @@ function SearchPage() {
                   {results.length} result{results.length === 1 ? "" : "s"} for “{query}”
                 </p>
                 <div className="mt-10">
-                  <ProductGrid products={results} />
+                  <ProductGrid items={results} />
                 </div>
               </>
             ) : (
@@ -97,7 +97,7 @@ function SearchPage() {
             <>
               <p className="label-xs text-muted-foreground">Popular right now</p>
               <div className="mt-10">
-                <ProductGrid products={suggestions} />
+                <ProductGrid items={suggestions} />
               </div>
             </>
           )}
