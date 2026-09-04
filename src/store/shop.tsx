@@ -160,7 +160,7 @@ export function ShopProvider({ children }: { children: ReactNode }) {
                 productId: product.id,
                 slug: product.slug,
                 name: product.name,
-                image: product.images[0],
+                image: product.images[0] ?? "",
                 price: product.price,
                 color,
                 size,
