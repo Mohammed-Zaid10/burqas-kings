@@ -6,13 +6,12 @@ import { GoogleSignIn } from "@/components/site/GoogleSignIn";
 import { useAuthSession } from "@/hooks/useAuthSession";
 import { supabase } from "@/integrations/supabase/client";
 
-type AuthSearch = { redirect?: string | undefined };
+type AuthSearch = { redirect?: string };
 
 export const Route = createFileRoute("/auth")({
   ssr: false,
-  validateSearch: (search: Record<string, unknown>): AuthSearch => ({
-    redirect: typeof search['redirect'] === "string" ? (search['redirect'] as string) : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): AuthSearch =>
+    typeof search['redirect'] === "string" ? { redirect: search['redirect'] } : {},
   head: () => ({
     meta: [
       { title: "Sign in — Burqas Kings" },
