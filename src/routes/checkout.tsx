@@ -3,6 +3,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Crumbs, Empty, PageHero } from "@/components/site/Bits";
 import { Button, ButtonLink } from "@/components/site/Button";
+import { GoogleSignIn } from "@/components/site/GoogleSignIn";
+import { useAuthSession } from "@/hooks/useAuthSession";
 import { inr } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { useShop } from "@/store/shop";
