@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Heart, Menu, Search, ShoppingBag, User, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useAuthSession } from "@/hooks/useAuthSession";
 import { useShop } from "@/store/shop";
 
 const NAV = [
