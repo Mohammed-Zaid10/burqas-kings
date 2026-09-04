@@ -16,6 +16,7 @@ const NAV = [
 
 export function Header() {
   const { totals, wishlist, setSearchOpen, setCartOpen } = useShop();
+  const { user } = useAuthSession();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
